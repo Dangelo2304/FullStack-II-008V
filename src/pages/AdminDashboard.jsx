@@ -263,13 +263,17 @@ export default function AdminDashboard() {
     }
   };
 
-  // --- HANDLERS USUARIOS EXISTENTES ---
+   // --- HANDLERS USUARIOS EXISTENTES ---
   const handleToggleUser = async (u) => {
     try {
-      await adminSetUserBlocked(u.id, !u.blocked, token);
-      setUsers(
-        users.map((user) =>
-          user.id === u.id ? { ...user, blocked: !user.blocked } : user
+      // ahora le pasamos el usuario COMPLETO, no solo el id
+      await adminSetUserBlocked(u, !u.blocked, token);
+
+      setUsers((prev) =>
+        prev.map((userItem) =>
+          userItem.id === u.id
+            ? { ...userItem, blocked: !userItem.blocked }
+            : userItem
         )
       );
     } catch (err) {

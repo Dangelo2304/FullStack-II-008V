@@ -251,11 +251,46 @@ export async function adminListUsers(token) {
   }
 }
 
-export async function adminSetUserBlocked(id, blocked, token) {
+/**
+ * Bloquear / desbloquear usuario SIN borrar datos.
+ * 1. Trae el usuario de Xano.
+ * 2. Manda todos los campos que espera el endpoint + blocked.
+ */
+// 👥 ADMIN – BLOQUEAR / DESBLOQUEAR USUARIO (sin GET extra)
+export async function adminSetUserBlocked(user, blocked, token) {
   try {
+    // calcular rol en formato numérico que espera Xano
+    let roleValue = 2;
+
+    if (typeof user.role === "number") {
+      roleValue = user.role;
+    } else if (typeof user.role_id === "number") {
+      roleValue = user.role_id;
+    } else if (user.role_id && typeof user.role_id === "object") {
+      const name =
+        user.role_id.name ||
+        user.role_id.title ||
+        user.role_id.rol ||
+        user.role_id.role;
+      roleValue = mapRoleStringToRoleId(name);
+    } else if (typeof user.role === "string") {
+      roleValue = mapRoleStringToRoleId(user.role);
+    }
+
+    // payload completo para que Xano no pise campos con null
+    const payload = {
+      email: user.email || "",
+      first_name: user.first_name || "",
+      last_name: user.last_name || "",
+      phone: user.phone || "",
+      shipping_address: user.shipping_address || "",
+      role: roleValue,          // 👈 en Xano el input se llama "role"
+      blocked: Boolean(blocked) // 👈 nuevo estado
+    };
+
     const res = await axios.patch(
-      `${ADMIN_AUTH_BASE}/user/${id}`,
-      { blocked },
+      `${ADMIN_AUTH_BASE}/user/${user.id}`,
+      payload,
       {
         headers: {
           "Content-Type": "application/json",
@@ -263,12 +298,14 @@ export async function adminSetUserBlocked(id, blocked, token) {
         },
       }
     );
+
     return res.data;
   } catch (err) {
     console.error("❌ Error adminSetUserBlocked:", err.response?.data || err);
     throw err;
   }
 }
+
 
 export async function adminDeleteUser(id, token) {
   try {
@@ -312,7 +349,7 @@ export async function adminCreateUser(userData, token) {
 }
 
 // ==============================
-// 👤 ADMIN – ACTUALIZAR USUARIO (CORREGIDO – PROTEGE CAMPOS)
+// 👤 ADMIN – ACTUALIZAR USUARIO
 // ==============================
 export async function adminUpdateUser(id, userData, token) {
   try {
@@ -331,7 +368,7 @@ export async function adminUpdateUser(id, userData, token) {
       }
     };
 
-    // protegidos — ya NO borran datos
+    // Campos de texto
     setIfNonEmpty("email", userData.email);
     setIfNonEmpty("first_name", userData.first_name);
     setIfNonEmpty("last_name", userData.last_name);
@@ -346,13 +383,13 @@ export async function adminUpdateUser(id, userData, token) {
       payload.password = userData.password.trim();
     }
 
-    // role_id
+    // role → el endpoint espera "role" (integer)
     if (
       userData.role !== undefined &&
       userData.role !== null &&
       String(userData.role).trim() !== ""
     ) {
-      payload.role_id = mapRoleStringToRoleId(userData.role);
+      payload.role = mapRoleStringToRoleId(userData.role);
     }
 
     // si no hay cambios, no pegamos al endpoint
@@ -361,16 +398,12 @@ export async function adminUpdateUser(id, userData, token) {
       return;
     }
 
-    const res = await axios.patch(
-      `${ADMIN_AUTH_BASE}/user/${id}`,
-      payload,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          ...adminAuthHeader(token),
-        },
-      }
-    );
+    const res = await axios.patch(`${ADMIN_AUTH_BASE}/user/${id}`, payload, {
+      headers: {
+        "Content-Type": "application/json",
+        ...adminAuthHeader(token),
+      },
+    });
 
     return res.data;
   } catch (err) {
@@ -412,7 +445,10 @@ export async function adminUpdateOrderStatus(id, status, token) {
     );
     return res.data;
   } catch (err) {
-    console.error("❌ Error adminUpdateOrderStatus:", err.response?.data || err);
+    console.error(
+      "❌ Error adminUpdateOrderStatus:",
+      err.response?.data || err
+    );
     throw err;
   }
 }
