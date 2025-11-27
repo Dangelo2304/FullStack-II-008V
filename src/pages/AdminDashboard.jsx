@@ -111,13 +111,19 @@ export default function AdminDashboard() {
   });
   const [editUserMessage, setEditUserMessage] = useState("");
 
-  // Cargas iniciales (puedes llamarlas donde quieras)
+  // --- FLAG PARA EVITAR DOBLE CARGA (React StrictMode) ---
+  const [initialized, setInitialized] = useState(false);
+
+  // Cargas iniciales
   useEffect(() => {
+    if (initialized) return; // evita doble ejecución en dev
+    setInitialized(true);
+
     loadProducts();
     loadOrders();
     loadUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialized]);
 
   const loadProducts = async () => {
     setLoading(true);
@@ -263,11 +269,11 @@ export default function AdminDashboard() {
     }
   };
 
-   // --- HANDLERS USUARIOS EXISTENTES ---
+  // --- HANDLERS USUARIOS EXISTENTES ---
   const handleToggleUser = async (u) => {
     try {
-      // ahora le pasamos el usuario COMPLETO, no solo el id
-      await adminSetUserBlocked(u, !u.blocked, token);
+      // ahora solo le pasamos el id al endpoint
+      await adminSetUserBlocked(u.id, !u.blocked, token);
 
       setUsers((prev) =>
         prev.map((userItem) =>

@@ -64,9 +64,9 @@ export const uploadImage = async (file) => {
 };
 
 // ==============================
-// 🆕 CREAR PRODUCTO
+// 🆕 CREAR PRODUCTO (ADMIN)
 // ==============================
-export const createProduct = async (productData) => {
+export const createProduct = async (productData, token) => {
   try {
     const cleanData = {
       name: productData.name,
@@ -77,13 +77,16 @@ export const createProduct = async (productData) => {
       image: Array.isArray(productData.image) ? productData.image : [],
     };
 
-    const res = await axios.post(`${BASE_URL}/product`, cleanData, {
-      headers: { "Content-Type": "application/json" },
+    const res = await axios.post(`${ADMIN_STORE_BASE}/product`, cleanData, {
+      headers: {
+        "Content-Type": "application/json",
+        ...adminAuthHeader(token),
+      },
     });
 
     return res.data;
   } catch (err) {
-    console.error("❌ Error al crear producto:", err);
+    console.error("❌ Error al crear producto:", err.response?.data || err);
     throw err;
   }
 };
@@ -243,7 +246,7 @@ export async function adminListUsers(token) {
         roleString = u.role_id === 1 ? "admin" : "cliente";
       }
 
-      return { ...u, role: roleString, blocked: Boolean(u.blocked) };
+      return { ...u, role: roleString, blocked: !!u.blocked };
     });
   } catch (err) {
     console.error("❌ Error adminListUsers:", err.response?.data || err);
@@ -251,45 +254,14 @@ export async function adminListUsers(token) {
   }
 }
 
-/**
- * Bloquear / desbloquear usuario SIN borrar datos.
- * 1. Trae el usuario de Xano.
- * 2. Manda todos los campos que espera el endpoint + blocked.
- */
-// 👥 ADMIN – BLOQUEAR / DESBLOQUEAR USUARIO (sin GET extra)
-export async function adminSetUserBlocked(user, blocked, token) {
+// 👥 ADMIN – BLOQUEAR / DESBLOQUEAR USUARIO (user_block/{user_id})
+export async function adminSetUserBlocked(id, blocked, token) {
   try {
-    // calcular rol en formato numérico que espera Xano
-    let roleValue = 2;
-
-    if (typeof user.role === "number") {
-      roleValue = user.role;
-    } else if (typeof user.role_id === "number") {
-      roleValue = user.role_id;
-    } else if (user.role_id && typeof user.role_id === "object") {
-      const name =
-        user.role_id.name ||
-        user.role_id.title ||
-        user.role_id.rol ||
-        user.role_id.role;
-      roleValue = mapRoleStringToRoleId(name);
-    } else if (typeof user.role === "string") {
-      roleValue = mapRoleStringToRoleId(user.role);
-    }
-
-    // payload completo para que Xano no pise campos con null
-    const payload = {
-      email: user.email || "",
-      first_name: user.first_name || "",
-      last_name: user.last_name || "",
-      phone: user.phone || "",
-      shipping_address: user.shipping_address || "",
-      role: roleValue,          // 👈 en Xano el input se llama "role"
-      blocked: Boolean(blocked) // 👈 nuevo estado
-    };
+    // 👈 AHORA ENVIAMOS BOOLEAN, COMO EN XANO
+    const payload = { blocked: !!blocked };
 
     const res = await axios.patch(
-      `${ADMIN_AUTH_BASE}/user/${user.id}`,
+      `${ADMIN_AUTH_BASE}/user_block/${id}`,
       payload,
       {
         headers: {
@@ -298,14 +270,12 @@ export async function adminSetUserBlocked(user, blocked, token) {
         },
       }
     );
-
     return res.data;
   } catch (err) {
     console.error("❌ Error adminSetUserBlocked:", err.response?.data || err);
     throw err;
   }
 }
-
 
 export async function adminDeleteUser(id, token) {
   try {
@@ -355,10 +325,8 @@ export async function adminUpdateUser(id, userData, token) {
   try {
     const payload = {};
 
-    // helper para evitar mandar strings vacíos
     const setIfNonEmpty = (key, value) => {
       if (value === undefined || value === null) return;
-
       if (typeof value === "string") {
         const trimmed = value.trim();
         if (trimmed === "") return;
@@ -368,14 +336,12 @@ export async function adminUpdateUser(id, userData, token) {
       }
     };
 
-    // Campos de texto
     setIfNonEmpty("email", userData.email);
     setIfNonEmpty("first_name", userData.first_name);
     setIfNonEmpty("last_name", userData.last_name);
     setIfNonEmpty("phone", userData.phone);
     setIfNonEmpty("shipping_address", userData.shipping_address);
 
-    // password solo si viene algo
     if (
       typeof userData.password === "string" &&
       userData.password.trim() !== ""
@@ -383,7 +349,6 @@ export async function adminUpdateUser(id, userData, token) {
       payload.password = userData.password.trim();
     }
 
-    // role → el endpoint espera "role" (integer)
     if (
       userData.role !== undefined &&
       userData.role !== null &&
@@ -392,7 +357,6 @@ export async function adminUpdateUser(id, userData, token) {
       payload.role = mapRoleStringToRoleId(userData.role);
     }
 
-    // si no hay cambios, no pegamos al endpoint
     if (Object.keys(payload).length === 0) {
       console.warn("⚠️ adminUpdateUser: no hay cambios para enviar");
       return;
@@ -654,27 +618,18 @@ export async function adminCreateBlogPost(data) {
 // ==============================
 export async function adminUpdateBlogPost(id, token, data) {
   try {
-    const slug =
-      data.slug ||
-      (data.title
-        ? data.title
-            .toLowerCase()
-            .replace(/\s+/g, "-")
-            .replace(/[^a-z0-9\-]/g, "")
-        : undefined);
+    const payload = {};
 
-    const payload = {
-      title: data.title,
-      section: data.section || "news",
-      tag: data.tag || "",
-      excerpt: data.excerpt || "",
-      body: data.body || "",
-      published: data.published ?? true,
-      cover_image: data.cover_image || null,
-      gallery: Array.isArray(data.gallery) ? data.gallery : [],
-    };
-
-    if (slug) payload.slug = slug;
+    if (data.title !== undefined) payload.title = data.title;
+    if (data.section !== undefined) payload.section = data.section;
+    if (data.tag !== undefined) payload.tag = data.tag;
+    if (data.excerpt !== undefined) payload.excerpt = data.excerpt;
+    if (data.body !== undefined) payload.body = data.body;
+    if (data.published !== undefined) payload.published = data.published;
+    if (data.cover_image !== undefined) payload.cover_image = data.cover_image;
+    if (data.gallery !== undefined)
+      payload.gallery = Array.isArray(data.gallery) ? data.gallery : [];
+    if (data.slug !== undefined) payload.slug = data.slug;
 
     const res = await axios.patch(`${BASE_URL}/blog_post/${id}`, payload, {
       headers: {
