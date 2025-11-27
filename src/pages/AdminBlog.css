@@ -1,0 +1,566 @@
+/* ============================
+   LAYOUT GENERAL
+   ============================ */
+
+.admin-page {
+  min-height: 100vh;
+  padding: 40px 0 80px;
+  background: radial-gradient(circle at top, #3b1d12 0, #0a0505 55%, #050308 100%);
+  color: #fef4d3;
+}
+
+/* ============================
+   HERO / CABECERA
+   ============================ */
+
+.admin-hero {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  padding: 24px 32px 26px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top, #3b230f 0, #1a0c07 45%, #100509 100%);
+  border: 1px solid rgba(255, 141, 47, 0.7);
+  box-shadow: 0 0 18px rgba(255, 141, 47, 0.2);
+  text-align: center;
+}
+
+.admin-hero-title {
+  font-size: 30px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffb74a;
+  margin: 0 0 6px;
+}
+
+.admin-hero-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #f6e7c2;
+  opacity: 0.9;
+}
+
+/* ============================
+   TOOLBAR (BOTÓN + FILTROS)
+   ============================ */
+
+.admin-toolbar {
+  max-width: 1200px;
+  margin: 0 auto 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-toolbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.admin-toolbar-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+/* BOTÓN PRINCIPAL */
+
+.admin-primary-btn {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 171, 64, 0.9);
+  background: linear-gradient(135deg, #ff9a2b, #ffcf4e);
+  color: #1a0804;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-primary-btn:hover {
+  box-shadow: 0 0 14px rgba(255, 171, 64, 0.9);
+  transform: translateY(-1px);
+}
+
+/* SELECTS + BUSCADOR */
+
+.admin-select {
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 192, 120, 0.8);
+  background: rgba(15, 7, 4, 0.95);
+  color: #ffe9c2;
+  font-size: 13px;
+  outline: none;
+}
+
+.admin-select:focus {
+  box-shadow: 0 0 10px rgba(255, 192, 120, 0.7);
+}
+
+.admin-search-input {
+  min-width: 210px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 192, 120, 0.8);
+  background: rgba(15, 7, 4, 0.95);
+  color: #ffe9c2;
+  font-size: 13px;
+  outline: none;
+}
+
+.admin-search-input::placeholder {
+  color: rgba(255, 228, 186, 0.55);
+}
+
+/* ============================
+   ESTADOS
+   ============================ */
+
+.admin-state {
+  max-width: 1200px;
+  margin: 16px auto 0;
+  text-align: center;
+  font-size: 14px;
+  color: #f6e7c2;
+}
+
+.admin-state-error {
+  color: #ff8a80;
+}
+
+/* ============================
+   LISTA DE POSTS
+   ============================ */
+
+.admin-blog-list {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* CARD */
+
+.admin-blog-card {
+  display: flex;
+  gap: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #3b230f 0, #14060a 45%, #050309 100%);
+  border: 1px solid rgba(255, 159, 63, 0.6);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.75);
+}
+
+/* Imagen lateral, tamaño controlado */
+.admin-blog-card-image {
+  width: 260px;
+  max-width: 260px;
+  flex-shrink: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.admin-blog-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Cuerpo */
+
+.admin-blog-card-body {
+  flex: 1;
+  padding: 14px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Header: título + meta + pill estado */
+
+.admin-blog-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.admin-blog-card-title {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffe7bf;
+}
+
+.admin-blog-card-meta {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 226, 189, 0.8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.admin-badge {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff9f3a, #ffcf4e);
+  color: #210904;
+}
+
+.admin-badge.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 196, 120, 0.7);
+  color: #ffd9a1;
+}
+
+.admin-blog-card-date {
+  opacity: 0.85;
+}
+
+/* Pill de estado */
+
+.admin-status-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: 1px solid rgba(255, 196, 120, 0.7);
+}
+
+.admin-status-pill.published {
+  background: linear-gradient(135deg, #34d399, #a7f3d0);
+  border-color: transparent;
+  color: #052e16;
+}
+
+.admin-status-pill.draft {
+  background: rgba(52, 52, 60, 0.9);
+  border-color: rgba(148, 163, 184, 0.9);
+  color: #e5e7eb;
+}
+
+/* Excerpt */
+
+.admin-blog-card-excerpt {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 236, 200, 0.9);
+}
+
+/* Botones de acción */
+
+.admin-blog-card-actions {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-btn-outline,
+.admin-btn-danger {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.admin-btn-outline {
+  border: 1px solid rgba(255, 196, 120, 0.9);
+  color: #ffcf6b;
+}
+
+.admin-btn-outline:hover {
+  background: linear-gradient(135deg, #ff9a2b, #ffd56b);
+  color: #1b0904;
+  box-shadow: 0 0 10px rgba(255, 179, 71, 0.9);
+}
+
+.admin-btn-danger {
+  border: 1px solid rgba(248, 113, 113, 0.9);
+  color: #fecaca;
+}
+
+.admin-btn-danger:hover {
+  background: linear-gradient(135deg, #f97373, #fecaca);
+  color: #450a0a;
+  box-shadow: 0 0 10px rgba(248, 113, 113, 0.9);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 900px) {
+  .admin-blog-card {
+    flex-direction: column;
+  }
+
+  .admin-blog-card-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-toolbar-left {
+    justify-content: center;
+  }
+
+  .admin-toolbar-right {
+    justify-content: center;
+  }
+}
+
+.admin-btn-edit {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4ecbff, #aeeaff);
+  border: 1px solid rgba(144, 224, 255, 0.9);
+  color: #032733;
+  transition: all 0.2s ease;
+}
+
+.admin-btn-edit:hover {
+  background: linear-gradient(135deg, #27b7ff, #c8f4ff);
+  box-shadow: 0 0 10px rgba(94, 211, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.edit-page {
+  padding: 40px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.admin-input,
+.admin-textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.admin-textarea.big {
+  min-height: 200px;
+}
+
+.edit-cover-preview {
+  width: 260px;
+  border-radius: 12px;
+  margin: 8px 0;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* ===========================================
+   ANIMACIONES GAMER / NEÓN KAMEHOUSE
+   =========================================== */
+
+/* Glow suave que respira */
+@keyframes kameGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(255, 163, 68, 0.0);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(255, 163, 68, 0.9);
+  }
+}
+
+/* Flotación ligera tipo tarjeta gamer */
+@keyframes kameFloatSoft {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Barrido de borde neón */
+@keyframes kameBorderScan {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Parpadeo leve para estado publicado */
+@keyframes kameStatusBlink {
+  0%, 100% {
+    filter: drop-shadow(0 0 0px rgba(167, 243, 208, 0.0));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(167, 243, 208, 0.9));
+  }
+}
+
+/* ===========================================
+   HERO CON BORDE NEÓN ANIMADO
+   =========================================== */
+
+.admin-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Borde neón animado alrededor del hero */
+.admin-hero::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    #ff8a00,
+    #ffcf4e,
+    #ff4d9d,
+    #ff8a00
+  );
+  opacity: 0.35;
+  mix-blend-mode: screen;
+  filter: blur(4px);
+  background-size: 200% 200%;
+  animation: kameBorderScan 6s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Para que el contenido del hero quede encima siempre */
+.admin-hero-title,
+.admin-hero-subtitle {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================================
+   CARDS DEL BLOG – FLOTE + NEÓN AL HOVER
+   =========================================== */
+
+.admin-blog-card {
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    border-color 0.18s ease-out,
+    background 0.18s ease-out;
+}
+
+/* Flota y aumenta el glow */
+.admin-blog-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 189, 92, 1);
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(255, 163, 68, 0.55);
+  background: radial-gradient(circle at top left, #4b2811 0, #1a070c 45%, #050309 100%);
+}
+
+/* Hace que todas las cards tengan una leve flotación continua */
+.admin-blog-list {
+  perspective: 1200px;
+}
+
+.admin-blog-card:nth-child(odd) {
+  animation: kameFloatSoft 6s ease-in-out infinite;
+}
+
+.admin-blog-card:nth-child(even) {
+  animation: kameFloatSoft 6s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+/* ===========================================
+   BOTONES – GLOW Y FEEDBACK RÁPIDO
+   =========================================== */
+
+.admin-primary-btn,
+.admin-btn-edit {
+  animation: kameGlowPulse 2.8s ease-in-out infinite;
+}
+
+/* Que el hover de los botones "explote" un poquito más */
+.admin-btn-outline:hover,
+.admin-btn-danger:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* ===========================================
+   STATUS PILL – MODO ONLINE / OFFLINE
+   =========================================== */
+
+.admin-status-pill.published {
+  animation: kameStatusBlink 2.6s ease-in-out infinite;
+}
+
+.admin-status-pill.draft {
+  opacity: 0.9;
+}
+
+.admin-create-panel {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top, #3b230f 0, #14060a 55%, #050309 100%);
+  border: 1px solid rgba(255, 189, 92, 0.8);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
+}
+
+.admin-create-title {
+  margin: 0 0 14px;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffcf6b;
+}
+
+.admin-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 232, 196, 0.9);
+}

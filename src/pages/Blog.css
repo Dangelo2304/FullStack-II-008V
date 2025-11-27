@@ -1,0 +1,626 @@
+/* ============================
+   BLOG PAGE
+   ============================ */
+
+.blog-page {
+  min-height: 100vh;
+  padding: 40px 0 80px;
+  background: radial-gradient(circle at top, #3b1d12 0, #0a0505 55%, #050308 100%);
+  color: #fef4d3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================
+   HERO / CABECERA
+   ============================ */
+
+.blog-hero {
+  width: 100%;
+  max-width: 1200px;
+  padding: 24px 32px 28px;
+  margin-bottom: 32px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top, #3b230f 0, #1a0c07 45%, #100509 100%);
+  box-shadow: 0 0 18px rgba(255, 153, 51, 0.15);
+  border: 1px solid rgba(255, 141, 47, 0.4);
+  text-align: center;
+}
+
+.blog-hero-title {
+  font-size: 28px;
+  letter-spacing: 0.18em;
+  color: #ffb84a;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+.blog-hero-subtitle {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #f6e7c2;
+  opacity: 0.9;
+}
+
+/* ============================
+   FILTROS Y BUSCADOR
+   ============================ */
+
+.blog-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.blog-filter-btn {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 179, 71, 0.6);
+  background: rgba(12, 6, 3, 0.85);
+  color: #ffdca3;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.blog-filter-btn:hover {
+  box-shadow: 0 0 10px rgba(255, 179, 71, 0.6);
+  transform: translateY(-1px);
+}
+
+.blog-filter-btn--active {
+  background: linear-gradient(135deg, #ff9d2f, #ffcf4a);
+  color: #1a0904;
+  border-color: transparent;
+}
+
+.blog-search-wrapper {
+  min-width: 260px;
+  max-width: 360px;
+  flex: 1 1 260px;
+}
+
+.blog-search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 179, 71, 0.6);
+  background: rgba(10, 4, 2, 0.9);
+  color: #ffe8c0;
+  font-size: 14px;
+  outline: none;
+}
+
+.blog-search-input::placeholder {
+  color: rgba(255, 228, 186, 0.65);
+}
+
+/* ============================
+   ESTADOS
+   ============================ */
+
+.blog-state {
+  margin-top: 20px;
+  color: #f6e7c2;
+  font-size: 14px;
+}
+
+/* ============================
+   GRID DE POSTS
+   ============================ */
+
+.blog-grid {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  justify-content: center;
+  gap: 24px;
+}
+
+/* 🔥 Clave para que la imagen NO se vea alargada */
+.blog-card-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* altura fija según ancho */
+  overflow: hidden;
+}
+
+.blog-card-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;      /* recorta sin deformar */
+}
+
+/* ============================
+   CUERPO DE LA CARD (VERSIÓN SIMPLE)
+   ============================ */
+
+.blog-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 226, 189, 0.8);
+}
+
+.blog-card-tag {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff9f3a, #ffcf4e);
+  color: #1a0804;
+}
+
+.blog-card-tag-secondary {
+  padding: 3px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 196, 120, 0.6);
+}
+
+.blog-card-date {
+  opacity: 0.8;
+}
+
+.blog-card-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffe7bf;
+}
+
+.blog-card-excerpt {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: rgba(255, 236, 200, 0.9);
+}
+
+/* botón "Leer más" (versión antigua, por si alguna card lo usa) */
+.blog-read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: 1px solid rgba(255, 174, 72, 0.9);
+  color: #ffcf6b;
+  text-decoration: none;
+  background: rgba(12, 5, 2, 0.9);
+  transition: all 0.2s ease;
+}
+
+.blog-read-more-btn:hover {
+  background: linear-gradient(135deg, #ff9a2b, #ffd56b);
+  color: #1b0904;
+  box-shadow: 0 0 10px rgba(255, 179, 71, 0.8);
+  transform: translateY(-1px);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+  .blog-hero {
+    padding: 18px 16px 22px;
+  }
+
+  .blog-hero-title {
+    font-size: 22px;
+    letter-spacing: 0.14em;
+  }
+
+  .blog-grid {
+    grid-template-columns: minmax(260px, 1fr);
+  }
+}
+
+/* ====== SECCIONES ====== */
+.blog-section {
+  margin-top: 60px;
+  position: relative;
+}
+
+/* Línea sutil de neón debajo del título */
+.blog-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 120px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff9c32, #ff4dff);
+  box-shadow: 0 0 12px rgba(255, 156, 50, 0.8);
+}
+
+/* Títulos de sección */
+.blog-section-title {
+  font-size: 32px;
+  margin-bottom: 26px;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  display: inline-block;
+  position: relative;
+}
+
+/* Neones gamer */
+.neon-orange { color: #ff9c32; text-shadow: 0 0 8px #ff9c32; }
+.neon-blue   { color: #4dd1ff; text-shadow: 0 0 10px #4dd1ff; }
+.neon-purple { color: #c96bff; text-shadow: 0 0 10px #c96bff; }
+
+/* ====== GRID DE CARDS (FINAL) ====== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 28px;
+}
+
+/* ====== ANIMACIONES ====== */
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(255, 156, 50, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 156, 50, 0.7);
+  }
+}
+
+@keyframes hologram {
+  0% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  100% {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
+
+/* ====== CARDS BASE (AHORA FLEX) ====== */
+.blog-card {
+  position: relative;
+  background: radial-gradient(circle at top, #2a1c10 0, #0a0503 55%, #050208 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transform-origin: center;
+  transition:
+    transform 0.22s ease-out,
+    box-shadow 0.22s ease-out,
+    border-color 0.22s ease-out,
+    background 0.22s ease-out;
+  opacity: 0;
+  animation: cardEnter 0.55s ease-out forwards;
+
+  /* 👇 para igualar alturas y poder bajar el botón */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Pequeño stagger para que entren una tras otra */
+.blog-grid .blog-card:nth-child(1) { animation-delay: 0.05s; }
+.blog-grid .blog-card:nth-child(2) { animation-delay: 0.12s; }
+.blog-grid .blog-card:nth-child(3) { animation-delay: 0.19s; }
+.blog-grid .blog-card:nth-child(4) { animation-delay: 0.26s; }
+
+/* Glow externo */
+.blog-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #ff9c32, #ff4dff, #4dd1ff);
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.25s ease-out;
+  z-index: -1;
+}
+
+/* Hover 3D + neón */
+.blog-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 156, 50, 0.7);
+  box-shadow:
+    0 0 22px rgba(255, 156, 50, 0.55),
+    0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+.blog-card:hover::before {
+  opacity: 1;
+}
+
+/* Diferente tono según sección (ligerísimo) */
+.blog-card-news {
+  background: radial-gradient(circle at top, #3b210a 0, #080309 60%, #050208 100%);
+}
+
+.blog-card-review {
+  background: radial-gradient(circle at top, #072135 0, #05020a 60%, #020308 100%);
+}
+
+.blog-card-curiosity {
+  background: radial-gradient(circle at top, #2b0844 0, #06020c 60%, #020208 100%);
+}
+
+/* ====== IMAGEN ====== */
+.blog-card-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.1);
+  transition: transform 0.35s ease-out, filter 0.35s ease-out;
+}
+
+.blog-card:hover .blog-card-img {
+  transform: scale(1.05);
+  filter: saturate(1.3) brightness(1.08);
+}
+
+/* ====== CUERPO (AHORA FLEX) ====== */
+.blog-card-body {
+  padding: 20px 22px 22px;
+  position: relative;
+  z-index: 1;
+  animation: hologram 3s ease-in-out infinite;
+  animation-delay: 0.4s;
+
+  /* 👇 esto hace que el contenido llene la card
+     y deje el botón pegado abajo */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ========= BADGES ========= */
+.badge {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Colores por tipo */
+.badge-news {
+  background: #ff9c3233;
+  color: #ffcf8a;
+  border: 1px solid rgba(255, 156, 50, 0.5);
+}
+
+.badge-review {
+  background: #4dd1ff33;
+  color: #d9f3ff;
+  border: 1px solid rgba(77, 209, 255, 0.5);
+}
+
+.badge-curiosity {
+  background: #c96bff33;
+  color: #f1ddff;
+  border: 1px solid rgba(201, 107, 255, 0.5);
+}
+
+.badge-tag {
+  background: #ffffff14;
+  color: #ffffffdd;
+}
+
+/* ========= TEXTO (VERSIÓN FINAL) ========= */
+.blog-card-date {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.blog-card-title {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-card-excerpt {
+  margin-top: 10px;
+  opacity: 0.82;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ========= BOTÓN LEER MÁS (ALINEADO ABAJO) ========= */
+.blog-card-btn {
+  margin-top: auto; /* 👈 magia: esto baja el botón al fondo */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #ff9c32;
+  color: #ffcf9a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: radial-gradient(circle at top, #3a210d 0, #120603 55%, #060203 100%);
+  box-shadow: 0 0 12px rgba(255, 156, 50, 0.45);
+  transition:
+    background 0.2s ease-out,
+    color 0.2s ease-out,
+    transform 0.15s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.blog-card-btn:hover {
+  background: linear-gradient(90deg, #ff9c32, #ff5b28);
+  color: #130802;
+  transform: translateY(-1px);
+  animation: neonPulse 0.8s ease-in-out infinite;
+}
+
+/* ===========================
+   FIX BLOG CARDS (MÓVIL)
+   =========================== */
+
+@media (max-width: 768px) {
+
+  /* Grid más compacto */
+  .blog-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding-inline: 12px;
+  }
+
+  /* Card base */
+  .blog-card {
+    border-radius: 18px !important;
+    overflow: hidden;
+    padding: 0 !important;
+    background: radial-gradient(circle at top, #2a1c10 0, #0a0503 55%, #050208 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 0 18px rgba(0,0,0,0.7);
+  }
+
+  /* Imagen cuadrada con buen recorte */
+  .blog-card-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16/10 !important;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .blog-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+  }
+
+  /* Contenido compacto */
+  .blog-card-body {
+    padding: 14px 16px !important;
+  }
+
+  /* Metadatos */
+  .blog-card-meta {
+    font-size: 11px !important;
+    gap: 6px !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* Título más pequeño */
+  .blog-card-title {
+    font-size: 18px !important;
+    line-height: 1.2;
+    margin-bottom: 10px !important;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Extracto recortado */
+  .blog-card-excerpt {
+    font-size: 13px !important;
+    line-height: 1.35;
+    margin-bottom: 12px !important;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Botón */
+  .blog-card-btn,
+  .blog-read-more-btn {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    border-radius: 999px !important;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+
+  .blog-card-title {
+    font-size: 16px !important;
+  }
+
+  .blog-card-excerpt {
+    font-size: 12px !important;
+  }
+
+  .blog-read-more-btn {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ===========================
+   OVERRIDES: Ocultar líneas/neones amarillas
+   Si quieres restaurarlas, elimina este bloque.
+   =========================== */
+.blog-hero,
+.blog-filter-btn,
+.blog-filter-btn--active,
+.blog-search-input,
+.blog-card-btn,
+.blog-read-more-btn,
+.blog-card::before,
+.blog-card,
+.blog-card:hover,
+.blog-filter-btn:hover,
+.blog-grid {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.blog-section::after {
+  display: none !important; /* quita la línea neón debajo de títulos */
+}
+

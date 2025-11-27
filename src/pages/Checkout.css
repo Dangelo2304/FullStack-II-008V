@@ -1,0 +1,384 @@
+/* ===========================
+   CHECKOUT PAGE - GAMER AESTHETIC
+   =========================== */
+
+.checkout-container {
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+.checkout-header {
+  background: linear-gradient(135deg, rgba(255, 146, 52, 0.15) 0%, rgba(255, 126, 29, 0.1) 100%);
+  border-bottom: 2px solid rgba(255, 146, 52, 0.3);
+  border-radius: 0.8rem;
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(255, 146, 52, 0.1);
+}
+
+.checkout-title {
+  color: #ff9f43;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 0;
+  text-shadow: 0 4px 12px rgba(255, 146, 52, 0.4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ===========================
+   CHECKOUT CONTENT
+   =========================== */
+
+.checkout-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* ===========================
+   CHECKOUT FORM
+   =========================== */
+
+.checkout-form-container {
+  background: linear-gradient(135deg, rgba(30, 20, 10, 0.8) 0%, rgba(40, 25, 10, 0.8) 100%);
+  border: 1px solid rgba(255, 146, 52, 0.3);
+  border-radius: 0.8rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.checkout-form-title {
+  color: #ff9f43;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.checkout-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.checkout-form-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.checkout-form-input {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(255, 146, 52, 0.1);
+  border: 1px solid rgba(255, 146, 52, 0.3);
+  border-radius: 0.6rem;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.checkout-form-input:focus {
+  outline: none;
+  border-color: rgba(255, 146, 52, 0.6);
+  background: rgba(255, 146, 52, 0.15);
+  box-shadow: 0 0 12px rgba(255, 146, 52, 0.2);
+}
+
+.checkout-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.checkout-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.checkout-form-row.full {
+  grid-template-columns: 1fr;
+}
+
+/* ===========================
+   CHECKOUT SUMMARY
+   =========================== */
+
+.checkout-summary {
+  background: linear-gradient(135deg, rgba(30, 20, 10, 0.8) 0%, rgba(40, 25, 10, 0.8) 100%);
+  border: 1px solid rgba(255, 146, 52, 0.3);
+  border-radius: 0.8rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.checkout-summary-title {
+  color: #ff9f43;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.checkout-summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 146, 52, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.checkout-summary-item:last-child {
+  border-bottom: none;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 2px solid rgba(255, 146, 52, 0.3);
+}
+
+.checkout-summary-item strong {
+  color: #ff9f43;
+  font-weight: 700;
+}
+
+.checkout-summary-total {
+  font-size: 1.2rem;
+  color: #ff9f43;
+  font-weight: 900;
+}
+
+/* ===========================
+   CHECKOUT BUTTON
+   =========================== */
+
+.checkout-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #ff9f43 0%, #ff7e1d 100%);
+  color: #000;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 12px rgba(255, 146, 52, 0.3);
+}
+
+.checkout-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ff7e1d 0%, #ff6b42 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 146, 52, 0.5);
+}
+
+.checkout-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.checkout-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   ALERTS
+   =========================== */
+
+.checkout-alert {
+  padding: 1rem;
+  border-radius: 0.6rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  border-left: 4px solid;
+}
+
+.checkout-alert.info {
+  background: rgba(100, 150, 200, 0.15);
+  border-left-color: #64a0ff;
+  color: #b3d9ff;
+}
+
+.checkout-alert.error {
+  background: rgba(255, 100, 100, 0.15);
+  border-left-color: #ff6b6b;
+  color: #ff9999;
+}
+
+.checkout-alert.success {
+  background: rgba(82, 196, 26, 0.15);
+  border-left-color: #52c41a;
+  color: #95de64;
+}
+
+/* ===========================
+   EMPTY CART
+   =========================== */
+
+.checkout-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, rgba(30, 20, 10, 0.8) 0%, rgba(40, 25, 10, 0.8) 100%);
+  border: 1px solid rgba(255, 146, 52, 0.3);
+  border-radius: 0.8rem;
+}
+
+.checkout-empty-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-empty-btn {
+  background: linear-gradient(135deg, #ff9f43 0%, #ff7e1d 100%);
+  color: #000;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.checkout-empty-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 146, 52, 0.5);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 768px) {
+  .checkout-content {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-summary {
+    position: static;
+    top: auto;
+  }
+
+  .checkout-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-title {
+    font-size: 1.5rem;
+  }
+
+  .checkout-form-container,
+  .checkout-summary {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .checkout-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .checkout-form-container,
+  .checkout-summary {
+    padding: 1.2rem;
+  }
+
+  .checkout-title {
+    font-size: 1.3rem;
+  }
+
+  .checkout-btn {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==== Overlay oscuro ==== */
+.checkout-loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+/* ==== Caja central ==== */
+.checkout-loading-box {
+  background: #1a0f06;
+  border: 2px solid #ff9c32;
+  box-shadow: 0 0 20px rgba(255, 156, 50, 0.7);
+  border-radius: 18px;
+  padding: 40px 60px;
+  text-align: center;
+  animation: popupScale 0.25s ease-out;
+}
+
+/* Animación de entrada */
+@keyframes popupScale {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ==== Loader circular ==== */
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 156, 50, 0.35);
+  border-top-color: #ff9c32;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==== Check de éxito ==== */
+.loader-check {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #4dff8d;
+  margin: 0 auto 15px;
+  box-shadow: 0 0 12px rgba(77, 255, 141, 0.7);
+  position: relative;
+}
+
+.loader-check::after {
+  content: "✔";
+  position: absolute;
+  font-size: 32px;
+  color: #4dff8d;
+  font-weight: bold;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -58%);
+}
+
+/* ==== Texto ==== */
+.loader-text {
+  font-family: "Orbitron", sans-serif;
+  color: #ffdebb;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  margin-top: 5px;
+}

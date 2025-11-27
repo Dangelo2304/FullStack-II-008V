@@ -1,0 +1,430 @@
+/* ===========================
+   MODAL DETALLE PRODUCTO — FONDO SÓLIDO
+   =========================== */
+
+.kame-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  backdrop-filter: blur(6px);
+}
+
+/* Caja del modal */
+.kame-modal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1a0f07, #0a0503 85%);
+  border: 1px solid rgba(255, 170, 80, 0.35);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.95),
+    0 0 25px rgba(255, 150, 60, 0.18);
+}
+
+/* Layout interno */
+.kame-modal-content {
+  display: grid;
+  grid-template-columns: 0.85fr 1.05fr;
+  gap: 0.6rem;
+  padding: 1.5rem 1.6rem;
+  overflow-y: auto;
+  max-height: 88vh;
+}
+
+/* Botón cerrar */
+.kame-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  color: #ffb340;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.kame-modal-close:hover {
+  color: #ffe2a0;
+  transform: scale(1.1);
+}
+
+/* ===========================
+   IMAGEN + FLECHAS JUNTAS
+   =========================== */
+
+.kame-modal-image-wrapper {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3/4;
+  border-radius: 20px;
+  padding: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle at top, rgba(255,180,80,0.15), #020102 70%);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.9);
+}
+
+.kame-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* FLECHAS */
+.kame-modal-img-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 180, 80, 0.4);
+  padding: 5px 9px;
+  color: #fff;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: 0.12s;
+}
+
+.kame-modal-img-nav.left { left: 6px; }
+.kame-modal-img-nav.right { right: 6px; }
+
+.kame-modal-img-nav:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* ===========================
+   COLUMNA INFO
+   =========================== */
+
+.kame-modal-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.kame-modal-title {
+  font-size: 1.85rem;
+  color: #ffb340;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.kame-modal-desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  max-height: 7rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/* Precio / stock */
+.kame-modal-price-value {
+  color: #ffb340;
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+
+.txt-stock-ok {
+  color: #ddc34d;
+  font-weight: 700;
+}
+
+.txt-stock-bad {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+/* ===========================
+   CANTIDAD + BOTÓN
+   =========================== */
+
+.kame-modal-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.kame-modal-qty {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 200, 140, 0.7);
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.kame-modal-qty button {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(180deg, #2b1b10, #140a05);
+  color: #ffb340;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: 0.15s;
+}
+
+.kame-modal-qty button:hover {
+  background: linear-gradient(180deg, #ffb340, #ff7a1a);
+  color: #1b0f07;
+}
+
+.kame-modal-qty span {
+  min-width: 32px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Botón agregar */
+.kame-modal-add-btn {
+  flex: 1;
+  background: linear-gradient(90deg, #ffb340, #ff7a1a);
+  color: #1b0f07;
+  font-weight: 800;
+  padding: 0.9rem;
+  border-radius: 999px;
+  border: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.15s;
+  box-shadow: 0 0 22px rgba(255, 150, 60, 0.45);
+}
+
+.kame-modal-add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 26px rgba(255, 180, 90, 0.7);
+}
+
+/* ===========================
+   RESPONSIVE MODAL
+   =========================== */
+
+@media (max-width: 900px) {
+  .kame-modal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .kame-modal-image-wrapper {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .kame-modal-actions {
+    flex-direction: column;
+  }
+
+  .kame-modal-add-btn {
+    width: 100%;
+  }
+
+  .kame-modal-title {
+    text-align: center;
+  }
+}
+
+/* ===========================
+   HEADER CATÁLOGO
+   =========================== */
+
+.kame-catalog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.kame-catalog-title-wrapper {
+  flex: 1 1 auto;
+  border-radius: 14px;
+  padding: 0.65rem 1.5rem;
+  border: 1px solid rgba(255, 179, 64, 0.25);
+}
+
+.kame-catalog-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Buscador */
+.kame-catalog-search {
+  min-width: 260px;
+  max-width: 360px;
+  border-radius: 999px;
+  border: 1px solid #dba67b;
+  background: rgba(10, 10, 10, 0.95);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+}
+
+.kame-catalog-search::placeholder {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Botón recargar */
+.kame-catalog-reload-btn {
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, #ffb340, #ff7a1a);
+  color: #c45003 !important;
+  padding-inline: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 18px rgba(255, 167, 66, 0.6);
+}
+
+/* ===========================
+   GRID PRODUCTOS
+   =========================== */
+
+.kame-product-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.kame-product-card {
+  display: flex;
+}
+
+/* ===========================
+   TARJETA PRODUCTO COMPLETA
+   =========================== */
+
+.kame-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 16px;
+}
+
+/* ---- ZONA SUPERIOR ---- */
+.kame-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* === PORTADAS IGUALES === */
+.kame-card-img-wrap {
+  width: 100%;
+  height: 300px;      
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, rgba(255,180,80,0.12), rgba(0,0,0,0.92));
+  padding: 0;
+}
+
+.kame-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Título */
+.kame-card-title {
+  margin: 0.7rem 0 0.2rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  min-height: 2.3rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Separador */
+.kame-card-separator {
+  height: 14px;
+}
+
+/* ---- ZONA INFERIOR ---- */
+
+.kame-card-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+/* Género */
+.kame-card-genre {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255, 230, 200, 0.9);
+  min-height: 1.1rem;
+}
+
+/* Precio + Stock */
+.kame-card-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.6rem;
+  min-height: 1.4rem;
+}
+
+.kame-card-price {
+  font-weight: 700;
+  color: #ffb347;
+}
+
+.kame-card-stock-ok {
+  color: #fbe0b0;
+}
+
+.kame-card-stock-bad {
+  color: #ff6b6b;
+}
+
+/* Botón agregar al carrito */
+.kame-product-btn {
+  font-size: 0.8rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+}
+
+/* Móvil: 2 por fila */
+@media (max-width: 768px) {
+  .kame-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Limpiar neones */
+.kame-catalog-title-wrapper,
+.kame-catalog-search,
+.kame-catalog-reload-btn {
+  box-shadow: none !important;
+  border-color: transparent !important;
+  background-image: none !important;
+}

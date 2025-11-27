@@ -1,0 +1,193 @@
+:root {
+  /* Tipograf\u00eda base y suavizado */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Paleta KameHouse (retro-naranja) */
+  --kame-orange: #ff7f32; /* color primario naranja brillante */
+  --kame-amber: #ffb74d;  /* tono suave para fondos */
+  --kame-cream: #fff3e0;  /* fondo claro pero cálido */
+  --kame-card-bg: #1a0f06; /* tarjeta oscuro con matiz cálido */
+  --kame-bg-top: #0b0710;  /* fondo superior oscuro */
+  --kame-bg-bottom: #1b1010; /* fondo inferior más cálido */
+  --kame-text: #f3e9e1;    /* texto principal claro sobre oscuro */
+  --kame-muted: #d9c7b3;   /* texto secundario */
+  --kame-accent: #ff9234;  /* acento naranja */
+  --kame-border: rgba(255,146,52,0.12);
+  /* Global motion tokens */
+  --kame-ease: cubic-bezier(.2,.9,.3,1);
+  --kame-trans-fast: 180ms;
+  --kame-trans-medium: 320ms;
+  --kame-trans-slow: 420ms;
+}
+
+/* Fondo general: degradado vertical cálido */
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--kame-bg-top), var(--kame-bg-bottom));
+  color: var(--kame-text);
+  font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Reserve space for fixed navbar; footer will appear at the end of content */
+#root { padding-top: 72px; padding-bottom: 24px; }
+
+/* Prevent horizontal scrolling caused by full-width elements */
+html, body { overflow-x: hidden; }
+
+/* Forced overrides to prevent Bootstrap light styles from hiding the retro theme */
+.bg-light { background-color: rgba(255,255,255,0.02) !important; color: var(--kame-text) !important; }
+.card { background-color: var(--kame-card-bg) !important; color: var(--kame-text) !important; border: 1px solid var(--kame-border) !important; }
+.btn-light { background: transparent !important; color: var(--kame-accent) !important; border: 1px solid var(--kame-border) !important; }
+.alert { background-color: rgba(255,183,77,0.06) !important; color: var(--kame-text) !important; border: 1px solid var(--kame-border) !important; }
+.text-muted { color: var(--kame-muted) !important; }
+
+/* Retro styling extras */
+.retro-title { letter-spacing: 1px; font-family: 'Orbitron', sans-serif; color: var(--kame-accent); text-shadow: 0 0 6px rgba(255,146,52,0.12), 0 0 14px rgba(255,146,52,0.06); }
+.pixel-border { box-shadow: none; border: 3px solid rgba(0,0,0,0.14); border-right-width: 6px; }
+.retro-badge { background: linear-gradient(90deg, rgba(255,127,50,0.18), rgba(255,159,77,0.06)); color: var(--kame-text); padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 700; }
+.kame-navbar .navbar-brand { font-weight: 900; color: #fff !important; }
+.kame-navbar .nav-link { color: #fff !important; }
+
+/* Enlaces y controles */
+a { color: var(--kame-accent); text-decoration: none; }
+a:hover { color: #ffb674; text-decoration: underline; }
+
+/* Titulares y botones con tipografía fuerte por defecto */
+.h-title { font-family: 'Orbitron', sans-serif; font-weight: 700; color: var(--kame-orange); text-shadow: 0 0 8px rgba(255,127,50,0.12); }
+h1, h2, h3, h4, h5, h6 { font-family: 'Orbitron', sans-serif; font-weight: 700; color: var(--kame-orange); }
+.btn { font-weight: 700; font-family: 'Orbitron', sans-serif; }
+
+/* Foco accesible */
+button:focus, button:focus-visible, .btn:focus { outline: 3px solid rgba(255,146,52,0.12); outline-offset: 2px; }
+
+/* Neon glow utility */
+.glow { box-shadow: 0 6px 30px rgba(255,146,52,0.08), inset 0 0 10px rgba(255,146,52,0.02); }
+
+/* Card theme for gamer */
+.gamer-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.16)); border: 1px solid var(--kame-border); }
+
+/* Preferencias de tema claro/oscuro: respetar paleta cálida en light */
+@media (prefers-color-scheme: light) {
+  body { color: #231815; background: linear-gradient(180deg, #ffefe6, #fff7f0); }
+}
+
+.card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+button.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+/* Retro pixel border utility */
+.pixel-border { box-shadow: 0 0 0 2px rgba(0,0,0,0.18) inset; border: 2px solid rgba(0,0,0,0.12); }
+
+/* Themed scrollbar to match KameHouse retro-orange palette
+   - WebKit browsers (Chrome, Edge, Safari)
+   - Firefox via scrollbar-color / scrollbar-width
+   - Small, rounded thumb with subtle gradient and inset border
+*/
+
+/* WebKit (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.08));
+  border-radius: 999px;
+  margin: 6px 0;
+}
+
+/* make the thumb translucent so it's visible but subtle */
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255,146,52,0.18), rgba(255,183,77,0.12));
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.06); /* thin border for soft inset */
+  box-shadow: inset 0 -1px 4px rgba(0,0,0,0.18);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.08);
+}
+
+*::-webkit-scrollbar-corner { background: transparent; }
+
+/* Firefox: use translucent thumb + subtle track */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,146,52,0.20) rgba(0,0,0,0.06);
+}
+
+/* Optional helper: slightly smaller on small devices */
+@media (max-width: 720px) {
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+}
+
+/* Accessibility: visible focus for elements that can scroll (keyboard) */
+[tabindex]:focus {
+  outline: 3px solid rgba(255,146,52,0.08);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* Global smoother transitions and GPU hints */
+img, .card, .btn, .kame-cart-btn, .card-img-top img, .product-card img {
+  transition: transform var(--kame-trans-medium) var(--kame-ease),
+              opacity var(--kame-trans-medium) var(--kame-ease),
+              box-shadow var(--kame-trans-medium) var(--kame-ease);
+  will-change: transform, opacity, box-shadow;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Slightly longer, smoother hover for cards and buttons */
+.card:hover { transition-duration: var(--kame-trans-slow); }
+.btn:hover, .kame-cart-btn:hover { transition-duration: var(--kame-trans-fast); transform: none; }
+
+/* Thumbnails and interactive small controls */
+.card-img-top img[style], .card-img-top img { will-change: transform, opacity; }
+.card-img-top img:hover, .card .card-img-top img:hover { transform: none; }
+
+/* -----------------------------
+   Retro / gamer cursor styles
+   - Uses compact SVG data-URIs so no external assets are needed
+   - body uses a warm retro arrow; interactive elements use a brighter pointer
+   - inputs keep the native text cursor for usability
+   ----------------------------- */
+
+:root {
+  /* small SVG cursors encoded inline; %23 is '#' for hex colors */
+  --cursor-retro: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path d='M2 2 L18 12 L14 14 L16 22 L10 15 L6 18 Z' fill='%23ffb74d' stroke='%231b0f06' stroke-width='1'/></svg>") 8 0, auto;
+  --cursor-retro-pointer: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path d='M2 2 L18 12 L14 14 L16 22 L10 15 L6 18 Z' fill='%23ffffff' stroke='%23ff7f32' stroke-width='1'/></svg>") 8 0, pointer;
+}
+
+/* Apply the retro cursor by default */
+body {
+  cursor: var(--cursor-retro);
+}
+
+/* Make interactive elements use a more pronounced retro pointer */
+a, button, .btn, .kame-cart-btn, .card, .product-card, input[type="button"], input[type="submit"], label[role="button"] {
+  cursor: var(--cursor-retro-pointer);
+}
+
+/* Keep form controls usable with the native text cursor */
+input, textarea, select {
+  cursor: text;
+}

@@ -1,0 +1,1112 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 1.6em rgba(255,127,50,0.28));
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 1.6em rgba(255,159,77,0.28));
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Navbar compact overrides: reduce visual height, tighten logo and controls */
+.kame-navbar {
+  padding: 0.5rem 0;
+  min-height: 60px;
+  background: linear-gradient(135deg, rgba(15, 10, 5, 0.95) 0%, rgba(30, 20, 10, 0.9) 100%);
+  border-bottom: 2px solid rgba(255, 146, 52, 0.3);
+  box-shadow: 0 4px 16px rgba(255, 146, 52, 0.15), 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.kame-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 146, 52, 0.5), transparent);
+}
+
+.kame-navbar .logo {
+  height: 40px !important;
+  padding: 0 !important;
+  filter: drop-shadow(0 0 8px rgba(255, 146, 52, 0.3));
+  transition: all 0.3s ease;
+}
+
+.kame-navbar .logo:hover {
+  filter: drop-shadow(0 0 16px rgba(255, 146, 52, 0.6));
+  transform: scale(1.05);
+}
+
+.kame-navbar .btn,
+.kame-navbar .nav-link {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.95rem;
+  position: relative;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.kame-navbar .navbar-brand { font-size: 1.1rem; }
+
+/* KameHouse brand typography in navbar */
+.kame-navbar .kame-brand-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.kame-navbar .kame-brand-name:hover {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 159, 67, 0.3);
+  transform: scale(1.05);
+}
+
+/* Make hover states and small interactions smoother */
+.kame-navbar .btn, .kame-navbar .nav-link {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.kame-navbar .nav-link::before,
+.kame-navbar .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 146, 52, 0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: 0;
+}
+
+.kame-navbar .nav-link:hover::before,
+.kame-navbar .btn:hover::before {
+  left: 100%;
+}
+
+.kame-navbar .nav-link:hover,
+.kame-navbar .btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 146, 52, 0.6);
+}
+
+/* Estilos especiales para botones */
+.kame-navbar .btn-light {
+  background: linear-gradient(135deg, #ff9f43 0%, #ff7e1d 100%);
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 146, 52, 0.3);
+  font-weight: 700;
+  position: relative;
+}
+
+.kame-navbar .btn-light:hover {
+  background: linear-gradient(135deg, #ff7e1d 0%, #ff6b42 100%);
+  box-shadow: 0 8px 20px rgba(255, 146, 52, 0.5);
+  transform: translateY(-4px) scale(1.08);
+  color: #fff !important;
+}
+
+.kame-navbar .btn-outline-warning {
+  border: 2px solid #ff9f43;
+  color: #fff !important;
+  font-weight: 700;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 146, 52, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.kame-navbar .btn-outline-warning:hover {
+  background: rgba(255, 146, 52, 0.1);
+  border-color: #ffc857;
+  box-shadow: 0 0 15px rgba(255, 146, 52, 0.4), inset 0 0 10px rgba(255, 146, 52, 0.1);
+  transform: translateY(-4px) scale(1.08);
+  color: #fff !important;
+}
+
+.kame-navbar .nav-link {
+  color: #fff !important;
+  position: relative;
+}
+
+.kame-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff9f43, #ff7e1d);
+  transition: width 0.3s ease;
+}
+
+.kame-navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Slightly reduce size on small screens to keep navbar compact */
+@media (max-width: 560px) {
+  .kame-navbar .kame-brand-name { font-size: 0.95rem; letter-spacing: 1.2px; }
+  .kame-navbar { min-height: 55px; }
+  .kame-navbar .btn, .kame-navbar .nav-link { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+}
+
+/* Cart thumbnail styling to match ProductGrid visuals */
+.cart-thumb {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), inset 0 -4px 8px rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));
+}
+
+/* Smoother card hover and image transitions */
+.card {
+  transition: transform var(--kame-trans-medium, 320ms) var(--kame-ease), box-shadow var(--kame-trans-medium, 320ms) var(--kame-ease), border-color var(--kame-trans-medium, 320ms) var(--kame-ease);
+  will-change: transform, box-shadow, border-color;
+}
+
+.card-img-top img {
+  transition: transform var(--kame-trans-slow, 420ms) var(--kame-ease), opacity var(--kame-trans-medium, 320ms) var(--kame-ease);
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* Thumbnails scale and shadow for a smoother feel */
+.card-img-top img[alt^="thumb"], .card-img-top img[alt*="thumb-"] {
+  transition: transform var(--kame-trans-fast, 180ms) var(--kame-ease), box-shadow var(--kame-trans-fast, 180ms) var(--kame-ease);
+}
+.card-img-top img[alt^="thumb"]:hover, .card-img-top img[alt*="thumb-"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.32);
+}
+
+.card {
+  padding: 1rem;
+  background-color: var(--kame-card-bg);
+  border: 1px solid var(--kame-border);
+  border-radius: 1rem; /* fallback for rounded-4 */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 12px rgba(255,146,52,0.03);
+}
+
+.hero {
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(255,127,50,0.08), rgba(255,159,77,0.03));
+  margin-bottom: 1.5rem;
+}
+
+.novedades {
+  background: var(--kame-card-bg);
+  border: 1px solid var(--kame-border);
+  border-radius: 12px;
+}
+
+.neon-btn {
+  /* navbar "Vender" control style: match Inicio */
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* Compact navbar */
+.navbar-compact {
+  padding-top: 0.12rem;
+  padding-bottom: 0.12rem;
+}
+
+/* KameHouse navbar and button utilities */
+.kame-navbar {
+  /* richer diagonal gradient with subtle depth and glass effect */
+  background: linear-gradient(110deg, rgba(20,10,6,0.88) 0%, rgba(40,18,8,0.6) 35%, rgba(255,150,60,0.09) 100%);
+  width: 100%;
+  left: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  position: fixed;
+  top: 0;
+  z-index: 1030;
+  border-bottom: 1px solid rgba(255,159,77,0.06);
+  backdrop-filter: blur(6px) saturate(110%);
+  transition: background 320ms ease, transform 220ms ease, box-shadow 320ms ease;
+}
+
+/* Thin neon orange separator under navbar */
+.kame-navbar::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px; /* sit just below the navbar edge */
+  height: 3px;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,159,67,0) 0%, rgba(255,159,67,0.98) 50%, rgba(255,159,67,0) 100%);
+  box-shadow: 0 6px 18px rgba(255,115,30,0.12), 0 0 6px rgba(255,140,40,0.08) inset;
+  transform: translateY(0);
+}
+
+/* Make the neon line more subtle on small screens */
+@media (max-width: 720px){
+  .kame-navbar::after{ height:2px; box-shadow: 0 4px 12px rgba(255,115,30,0.09); }
+}
+
+/* moving sheen effect (subtle) */
+.kame-navbar::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0) 80%);
+  transform: translateX(-100%);
+  pointer-events: none;
+  transition: transform 1.6s ease-in-out;
+}
+.kame-navbar:hover::before{ transform: translateX(0%); }
+
+/* subtle lift when page content interacts - keeps navbar engaging */
+.kame-navbar:hover{ transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.48); }
+
+/* Cart button in navbar: compact, themed and aligned with badge */
+.kame-cart-btn {
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  padding: 0.35rem 0.6rem !important;
+  border-radius: 0.6rem !important;
+  font-weight: 700 !important;
+  gap: 0.35rem;
+  box-shadow: none !important;
+}
+.kame-cart-btn svg { color: #fff; opacity: 0.95; }
+.kame-cart-btn:hover { background: rgba(255,255,255,0.03) !important; }
+
+.kame-cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #000;
+  background: linear-gradient(135deg, #ff9f43 0%, #ff7e1d 100%);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(255, 146, 52, 0.5);
+  transform: translate(35%, -35%);
+  border: 1.5px solid rgba(15, 10, 5, 0.9);
+  text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.kame-cart-btn {
+  background: linear-gradient(135deg, rgba(255, 159, 67, 0.12) 0%, rgba(255, 126, 29, 0.08) 100%);
+  border: 1px solid rgba(255, 159, 67, 0.18);
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  transition: transform 220ms ease, box-shadow 260ms ease, background 240ms ease;
+  box-shadow: 0 6px 18px rgba(255, 140, 50, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.kame-cart-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.kame-cart-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 159, 67, 0.25) 0%, rgba(255, 126, 29, 0.2) 100%);
+  border-color: rgba(255, 159, 67, 0.6);
+  box-shadow: 0 6px 16px rgba(255, 146, 52, 0.35), inset 0 0 10px rgba(255, 159, 67, 0.1);
+  transform: translateY(-2px);
+}
+
+.kame-cart-btn:hover::before {
+  left: 100%;
+}
+
+.kame-cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.08rem 0.5rem;
+  height: auto;
+  min-width: 22px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--kame-accent);
+  border-radius: 999px;
+  border: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  text-shadow: none;
+  letter-spacing: 0.2px;
+}
+
+@keyframes cartPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.kame-btn-warning {
+  /* flat warning button: solid color, no reflections */
+  background: var(--kame-accent) !important;
+  color: #1b0f06 !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  box-shadow: none !important;
+}
+.kame-btn-light {
+  /* flat light button */
+  background: transparent !important;
+  color: var(--kame-accent) !important;
+  border: 1px solid var(--kame-border) !important;
+  box-shadow: none !important;
+}
+.kame-btn-home {
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  padding: 0.45rem 0.8rem !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+.kame-btn-neon {
+  /* make Vender match Inicio: transparent background, white text, subtle white border */
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  box-shadow: none !important;
+}
+.kame-btn-neon { color: #ffffff !important; }
+
+/* Unified navbar button style: all navbar action controls (Inicio, Vender, Iniciar sesión, Registrarse, Cerrar sesión, Carrito) */
+.kame-navbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.75rem !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-radius: 0.6rem !important;
+  text-decoration: none !important;
+  transition: color 180ms ease, transform 180ms ease, box-shadow 200ms ease;
+  position: relative;
+  overflow: visible;
+}
+.kame-navbar-btn:hover { transform: translateY(-3px); }
+
+/* animated underline for navbar links */
+.kame-navbar-btn::after{
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -6px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,159,77,0), rgba(255,159,77,0.9), rgba(255,159,77,0));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1);
+}
+.kame-navbar-btn:hover::after{ transform: scaleX(1); }
+.kame-navbar-btn:active { transform: translateY(0); }
+.kame-navbar-btn svg { opacity: 0.95; }
+.nav-link.kame-navbar-btn { display: inline-flex; align-items: center; }
+
+/* Retro card and button emphasis */
+.retro-card {
+  border: 2px solid rgba(0,0,0,0.15);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.6), 0 0 24px rgba(255,146,52,0.06);
+  background: linear-gradient(180deg, rgba(27,11,6,0.92), rgba(26,15,6,0.98));
+}
+.pixel-border-strong { border: 4px solid rgba(0,0,0,0.18); }
+.btn-warning, .kame-btn-warning { background: var(--kame-accent) !important; color: #1b0f06 !important; border: 1px solid rgba(0,0,0,0.06) !important; box-shadow: none !important; }
+
+/* subtle hover states for navbar buttons */
+.kame-btn-warning:hover, .btn-warning:hover { filter: brightness(0.95); }
+.kame-btn-home:hover, .kame-btn-neon:hover, .neon-btn:hover { background: rgba(255,255,255,0.03) !important; }
+.retro-hint { font-family: 'Courier New', Courier, monospace; color: var(--kame-amber); }
+
+/* Footer styles */
+.kame-footer {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  left: 0;
+  border-top: 1px solid rgba(255,146,52,0.06);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: var(--kame-text);
+}
+
+/* Make the 'Iniciar sesión' link use the same strong display font as buttons (without altering other buttons) */
+.kame-login-link { font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: 0.4px; color: #fff !important; }
+
+/* Make the login link look like a button without touching Inicio/Vender */
+.kame-login-link.kame-btn-like {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  border-radius: .5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  text-decoration: none;
+}
+.kame-login-link.kame-btn-like:hover { background: rgba(255,255,255,0.03); }
+
+/* full-bleed background without moving inner content */
+.kame-footer::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(255,127,50,0.06), rgba(255,159,77,0.02));
+  z-index: -1;
+}
+
+/* Hidden by default; becomes visible when the user reaches near the bottom */
+.kame-footer--hidden { opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .28s ease, transform .28s ease; }
+.kame-footer--visible { opacity: 1; transform: translateY(0); pointer-events: auto; transition: opacity .28s ease, transform .28s ease; }
+
+/* Make footer less tall on small screens */
+@media (max-width: 576px) {
+  .kame-footer { padding-top: .6rem; padding-bottom: .6rem; font-size: .9rem; }
+}
+
+/* align inner footer container with main layout */
+.kame-footer .container { max-width: 1280px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+.kame-footer .retro-title { color: var(--kame-accent); font-size: 1.1rem; }
+.kame-footer .text-muted { color: var(--kame-muted); }
+.kame-footer a { color: var(--kame-accent); text-decoration: none; }
+
+/* make sure containers don't cause overflow when full-width elements are fixed */
+.container, .container-fluid { box-sizing: border-box; }
+
+/* App layout helpers to allow footer to sit after content (push-to-bottom) */
+.kame-app-root { min-height: 100vh; }
+.kame-main { padding: 1.5rem 1rem; }
+
+/* Product card alignment: keep price and add-button aligned across cards */
+.price-row { min-height: 38px; }
+.card-body .d-grid button { min-height: 44px; }
+.kame-btn-added { background: transparent !important; color: var(--kame-amber) !important; border: 1px solid var(--kame-amber) !important; }
+.kame-btn-added[disabled] { opacity: 0.8; }
+
+/* Card hover effects */
+.gamer-card, .card.h-100 {
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms ease, border-color 220ms ease;
+}
+.gamer-card:hover, .card.h-100:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,146,52,0.06);
+  border-color: rgba(255,146,52,0.12);
+}
+
+/* Product image styling */
+.card-img-top { border-bottom: 1px solid rgba(255,255,255,0.03); }
+
+/* Neon title pulse */
+.h-title { animation: neonPulse 3.6s ease-in-out infinite; }
+@keyframes neonPulse {
+  0%,100% { text-shadow: 0 0 6px rgba(255,146,52,0.06); }
+  50% { text-shadow: 0 0 18px rgba(255,146,52,0.20); }
+}
+
+.muted { color: rgba(255,255,255,0.6); }
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Auth card (login/register) theming: keeps visuals consistent and centralizes styles */
+.kame-auth-card {
+  max-width: 480px;
+  width: 100%;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgba(10,6,3,0.98), rgba(22,12,5,0.98));
+  border: 2px solid rgba(255,146,52,0.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 40px rgba(255,146,52,0.1);
+  color: #fff;
+  margin: 0 1rem;
+}
+
+.kame-auth-card .form-label { color: #fff; font-size: 0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; }
+.kame-auth-card .form-control {
+  background: linear-gradient(180deg, rgba(255,127,50,0.08), rgba(0,0,0,0.8));
+  border: 1.5px solid rgba(255,146,52,0.5);
+  border-left: 4px solid rgba(255,146,52,0.7);
+  color: #fff !important;
+  padding: 0.75rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 0.95rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+  transition: box-shadow .18s ease, border-color .18s ease, transform .12s ease;
+}
+.kame-auth-card .form-control::placeholder { color: #c0c0c0; opacity: 1; }
+.kame-auth-card .form-control:focus {
+  outline: none;
+  border-color: rgba(255,146,52,0.8);
+  box-shadow: 0 0 12px rgba(255,146,52,0.28), inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.kame-auth-btn {
+  background: linear-gradient(135deg, #ff9f43 0%, #ff7e1d 50%, #ffb347 100%);
+  border: 2px solid rgba(255,100,0,0.6);
+  color: #1b0f06 !important;
+  padding-block: 0.85rem;
+  padding-inline: 2rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 8px 24px rgba(255,146,52,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 900;
+  transition: transform .18s ease, box-shadow .18s ease, opacity .12s ease;
+}
+.kame-auth-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255,146,52,0.6), inset 0 1px 0 rgba(255,255,255,0.2); }
+.kame-auth-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* -----------------------------
+   CreateProduct (scoped) inputs
+   ----------------------------- */
+.max-w-lg input,
+.max-w-lg textarea,
+.max-w-lg select,
+.max-w-lg .form-control,
+.max-w-lg input[type="number"],
+.max-w-lg input[type="file"] {
+  background: linear-gradient(180deg, rgba(255,127,50,0.04), rgba(255,159,77,0.01));
+  border: 1px solid rgba(255,146,52,0.10);
+  color: var(--kame-text) !important;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.6rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  transition: box-shadow 140ms ease, border-color 140ms ease, transform 120ms ease;
+}
+
+.max-w-lg input::placeholder,
+.max-w-lg textarea::placeholder {
+  color: rgba(243,233,225,0.56) !important;
+}
+
+.max-w-lg input:focus,
+.max-w-lg textarea:focus,
+.max-w-lg select:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(255,146,52,0.08);
+  border-color: rgba(255,146,52,0.18);
+}
+
+/* file input is hard to style; ensure label/text matches theme */
+.max-w-lg input[type="file"] {
+  color: var(--kame-text);
+}
+
+.max-w-lg img {
+  border: 1px solid rgba(255,146,52,0.06);
+}
+
+/* Make the submit button match the orange theme on this page without editing JSX */
+.max-w-lg button {
+  background: var(--kame-accent) !important;
+  color: #1b0f06 !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  box-shadow: none !important;
+}
+
+/* Layout improvements specific to CreateProduct (still scoped to .max-w-lg) */
+.max-w-lg form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.max-w-lg form .w-full,
+.max-w-lg form input,
+.max-w-lg form textarea,
+.max-w-lg form select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make file input, image preview and submit button span full width */
+.max-w-lg form input[type="file"],
+.max-w-lg form img,
+.max-w-lg form button,
+.max-w-lg form p.text-center {
+  grid-column: 1 / -1;
+}
+
+/* Give image preview a fixed height and cover scaling */
+.max-w-lg form img {
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+/* Slightly larger submit button and consistent padding */
+.max-w-lg form button {
+  padding: 0.7rem 0.9rem;
+  font-weight: 800;
+  border-radius: 0.6rem;
+}
+
+/* Make single-column on small screens */
+@media (max-width: 576px) {
+  .max-w-lg form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Highly-scoped polish for the exact CreateProduct container */
+.p-4.max-w-lg.mx-auto.text-white {
+  background: linear-gradient(180deg, rgba(255,127,50,0.02), rgba(27,11,6,0.02));
+  padding: 1.25rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255,146,52,0.04);
+}
+
+.p-4.max-w-lg.mx-auto.text-white h2 {
+  grid-column: 1 / -1;
+  text-align: left;
+  margin-bottom: 0.6rem;
+}
+
+/* Neutralize utility vertical spacing if present and rely on grid gap */
+.p-4.max-w-lg.mx-auto.text-white .space-y-3 > * { margin-top: 0 !important; margin-bottom: 0 !important; }
+
+.p-4.max-w-lg.mx-auto.text-white form {
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  align-items: stretch;
+}
+
+.p-4.max-w-lg.mx-auto.text-white form input,
+.p-4.max-w-lg.mx-auto.text-white form textarea,
+.p-4.max-w-lg.mx-auto.text-white form select {
+  min-height: 46px;
+  font-size: 0.98rem;
+  padding: 0.6rem 0.8rem;
+}
+
+/* Make file control more visible and themed */
+.p-4.max-w-lg.mx-auto.text-white form input[type="file"] {
+  display: block;
+  background: rgba(255,127,50,0.02);
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.6rem;
+}
+
+/* Ensure the preview is visually anchored and spans full width */
+.p-4.max-w-lg.mx-auto.text-white form img {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+/* Submit button: full width and slightly elevated */
+.p-4.max-w-lg.mx-auto.text-white form button {
+  grid-column: 1 / -1;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.6px;
+}
+
+/* Make single-column on narrow screens */
+@media (max-width: 720px) {
+  .p-4.max-w-lg.mx-auto.text-white form { grid-template-columns: 1fr; gap: 0.6rem; }
+  .p-4.max-w-lg.mx-auto.text-white h2 { text-align: center; }
+}
+
+/* Further refine CreateProduct layout using only CSS */
+.p-4.max-w-lg.mx-auto.text-white { position: relative; }
+.p-4.max-w-lg.mx-auto.text-white::before {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  top: 0.75rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,146,52,0.06), rgba(255,146,52,0));
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.p-4.max-w-lg.mx-auto.text-white h2 { background: transparent; padding-left: 0.15rem; }
+
+.p-4.max-w-lg.mx-auto.text-white form {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Target inputs by order inside the form (keeps JSX untouched) */
+.p-4.max-w-lg.mx-auto.text-white form input:nth-of-type(1) {
+  grid-column: 1 / -1; /* Nombre full width */
+}
+.p-4.max-w-lg.mx-auto.text-white form input:nth-of-type(2) {
+  grid-column: 1 / 2; /* Precio left */
+}
+.p-4.max-w-lg.mx-auto.text-white form input:nth-of-type(3) {
+  grid-column: 2 / 3; /* Stock right */
+}
+.p-4.max-w-lg.mx-auto.text-white form input:nth-of-type(4) {
+  grid-column: 1 / -1; /* Categoria full width */
+}
+.p-4.max-w-lg.mx-auto.text-white form input[type="file"] {
+  grid-column: 1 / -1; /* File full width */
+}
+
+/* Make inputs feel integrated with a subtle left accent */
+.p-4.max-w-lg.mx-auto.text-white form input,
+.p-4.max-w-lg.mx-auto.text-white form textarea,
+.p-4.max-w-lg.mx-auto.text-white form select {
+  border-left: 4px solid rgba(255,146,52,0.06);
+}
+
+/* Small responsive tweaks */
+@media (max-width: 860px) {
+  .p-4.max-w-lg.mx-auto.text-white form input:nth-of-type(2),
+  .p-4.max-w-lg.mx-auto.text-white form input:nth-of-type(3) {
+    grid-column: 1 / -1; /* stack price + stock on narrower widths */
+  }
+}
+
+/* NAVBAR TOGGLER - SANDWICH MENU (base) */
+.kame-navbar .navbar-toggler {
+  display: none; /* default hidden */
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* ===========================
+   Toggler y menú móvil
+   =========================== */
+@media (max-width: 991.98px) {
+  .kame-navbar .navbar-toggler {
+    display: flex; /* show on small screens */
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .kame-navbar .navbar-toggler:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .kame-navbar .navbar-toggler,
+  .kame-navbar .navbar-toggler:focus,
+  .kame-navbar .navbar-toggler:active,
+  .kame-navbar .navbar-toggler[aria-expanded="true"] {
+    background: transparent !important;
+    border-color: rgba(255,159,67,0.12) !important;
+    box-shadow: none !important;
+  }
+
+  .kame-navbar .navbar-toggler .navbar-toggler-icon {
+    background-image: none !important;
+    width: 22px;
+    height: 3px;
+    background: #fff !important;
+    position: relative;
+    border-radius: 2px;
+    box-shadow: none !important;
+  }
+
+  .kame-navbar .navbar-toggler .navbar-toggler-icon::before,
+  .kame-navbar .navbar-toggler .navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #fff !important;
+    border-radius: 2px;
+    box-shadow: none !important;
+  }
+
+  .kame-navbar .navbar-toggler .navbar-toggler-icon::before { top: -7px; }
+  .kame-navbar .navbar-toggler .navbar-toggler-icon::after { top: 7px; }
+
+  /* Mantener siempre 3 líneas, sin transformarlas en X */
+  .kame-navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon,
+  .kame-navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+  .kame-navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transform: none !important;
+  }
+
+  @keyframes togglerOpenGlow {
+    0% {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      filter: brightness(1);
+    }
+    50% {
+      box-shadow: 0 10px 30px rgba(255,159,67,0.25);
+      filter: brightness(1.18);
+    }
+    100% {
+      box-shadow: 0 6px 16px rgba(255,159,67,0.18);
+      filter: brightness(1.06);
+    }
+  }
+
+  .kame-navbar .navbar-toggler[aria-expanded="true"] {
+    animation: togglerOpenGlow 0.6s ease-out both;
+  }
+
+  .kame-navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon,
+  .kame-navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+  .kame-navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    filter: brightness(1.05);
+  }
+
+  /* Panel del menú móvil: mismo tono que el navbar */
+  .kame-navbar .collapse.navbar-collapse {
+    background: linear-gradient(
+      135deg,
+      rgba(20, 10, 6, 0.98),
+      rgba(40, 18, 8, 0.96)
+    );
+    border-radius: 10px;
+    padding: 0.6rem;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Layout interno del contenedor de botones */
+  .kame-navbar .navbar-collapse .kame-nav-actions,
+  .kame-navbar .navbar-collapse.collapsing .kame-nav-actions {
+    display: flex;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.55rem;
+    padding: 0.7rem 0.4rem;
+    width: 100%;
+  }
+
+  /* Estilo base de cada item */
+  .kame-navbar .navbar-collapse .kame-nav-actions .btn,
+  .kame-navbar .navbar-collapse .kame-nav-actions .nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.65rem 1rem;
+    margin: 0;
+    border-radius: 8px;
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transform: none !important;
+    transition:
+      background-color 140ms linear,
+      border-color 140ms linear,
+      color 140ms linear;
+  }
+
+  /* Hover / active: tono ligeramente distinto */
+  .kame-navbar .navbar-collapse .kame-nav-actions .btn:hover,
+  .kame-navbar .navbar-collapse .kame-nav-actions .btn:focus,
+  .kame-navbar .navbar-collapse .kame-nav-actions .nav-link:hover,
+  .kame-navbar .navbar-collapse .kame-nav-actions .nav-link:focus,
+  .kame-navbar .navbar-collapse .kame-nav-actions .nav-link.active {
+    background: rgba(255, 159, 67, 0.18) !important;
+    border-color: rgba(255, 159, 67, 0.6) !important;
+    color: #ffffff !important;
+  }
+
+  /* Carrito alineado a la izquierda dentro del menú móvil */
+  .kame-navbar .navbar-collapse .kame-nav-actions .kame-cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding-left: 1rem;
+  }
+
+  .kame-navbar .collapse.navbar-collapse .kame-cart-btn .kame-cart-count {
+    background: var(--kame-accent) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18) !important;
+  }
+
+  /* Separator before session links (login / logout) en móvil */
+  .kame-navbar .collapse.navbar-collapse .kame-login-link::before,
+  .kame-navbar .collapse.navbar-collapse .nav-link[title="Cerrar tu sesión"]::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,159,67,0.18), transparent);
+    margin: 0.5rem 0 0.6rem 0;
+  }
+
+  .kame-navbar .collapse.navbar-collapse .kame-login-link,
+  .kame-navbar .collapse.navbar-collapse .nav-link[title="Cerrar tu sesión"] {
+    padding-top: 0.6rem;
+  }
+}
+
+/* Small helper text/message centered and full width */
+.p-4.max-w-lg.mx-auto.text-white form p.text-center { grid-column: 1 / -1; }
+
+/* ===============================
+   IMÁGENES DEL CATÁLOGO KAMEHOUSE
+   =============================== */
+
+.kame-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;      /* 👈 TODAS iguales */
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 14px;      /* 👈 borde redondeado */
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.4rem;          /* pequeño margen interno */
+}
+
+/* Imagen dentro del contenedor */
+.kame-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* 👈 nunca recorta */
+  border-radius: 10px;      /* 👈 redondeado suave */
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Pequeño zoom en hover para estética gamer */
+.kame-card-img-wrap:hover .kame-card-img {
+  transform: scale(1.03);
+  filter: brightness(1.04);
+}
+
+/******************************************
+  BLOQUE SUPERIOR: TÍTULO + GÉNERO
+******************************************/
+
+.kame-product-title {
+  font-size: 1rem !important;
+  line-height: 1.2;
+  height: 2.4rem !important;           /* 2 líneas fijas */
+  margin-bottom: 0.25rem !important;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.kame-product-genre {
+  font-size: 0.9rem !important;
+  line-height: 1.2;
+  height: 1.2rem !important;           /* 1 línea fija */
+  margin-bottom: 0 !important;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/******************************************
+  BLOQUE INFERIOR: PRECIO + STOCK + BOTÓN
+******************************************/
+
+/* Cuerpo de la card en columna */
+.kame-product-body {
+  display: flex !important;
+  flex-direction: column !important;
+  /* altura total del texto, ajusta si quieres más/menos aire */
+  min-height: 210px !important;
+}
+
+/* Fila PRECIO / STOCK: con “bloque invisible” arriba */
+.kame-product-price-row,
+.kame-product-body > div.d-flex {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+
+  height: 1.6rem !important;
+
+  /* 🔹 Este margen crea la SEPARACIÓN entre título+género y precio+stock */
+  margin-top: 1.2rem !important;      /* súbelo/bájalo para más o menos espacio */
+  margin-bottom: 0.7rem !important;
+}
+
+/* Botón siempre pegado al borde inferior del texto */
+.kame-product-btn {
+  margin-top: auto !important;
+  font-size: 0.85rem;
+}

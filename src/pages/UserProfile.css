@@ -1,0 +1,535 @@
+/* ======== LAYOUT GENERAL ======== */
+
+.profile-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 16px 80px;
+    color: #fff7e6;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.profile-empty {
+    text-align: center;
+    margin-top: 40px;
+    opacity: 0.8;
+}
+
+/* ======== HEADER ======== */
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.profile-title {
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ffe29a;
+    text-shadow: 0 0 12px rgba(255, 153, 0, 0.5);
+}
+
+.profile-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+/* Chip de rol */
+
+.role-chip {
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(255, 180, 0, 0.55);
+    box-shadow: 0 0 16px rgba(255, 163, 26, 0.65);
+    background: radial-gradient(circle at 0 0, #ffb347 0, #5a2500 55%, #14040a 100%);
+}
+
+.role-admin {
+    color: #fff;
+}
+
+.role-cliente,
+.role-default,
+.role-sin,
+.role-undefined {
+    color: #ffe29a;
+}
+
+/* ======== CARD PRINCIPAL ======== */
+
+.profile-card {
+    display: flex;
+    gap: 32px;
+    padding: 30px 28px;
+    border-radius: 26px;
+    border: 1px solid rgba(255, 196, 120, 0.6);
+    background:
+        radial-gradient(circle at 0 0, #5a2c0f 0, #18040a 55%, #050007 100%);
+    box-shadow:
+        0 0 40px rgba(255, 145, 0, 0.35),
+        0 0 4px rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(4px);
+}
+
+/* LEFT: Avatar + nombre + menú */
+
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-width: 240px;
+    border-right: 1px solid rgba(255, 196, 120, 0.35);
+    padding-right: 26px;
+}
+
+.profile-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 0, #ffe29a 0, #ff9100 40%, #5a2500 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #2b0b00;
+    box-shadow:
+        0 0 22px rgba(255, 145, 0, 0.95),
+        0 0 50px rgba(255, 145, 0, 0.5);
+}
+
+.profile-name-block h2 {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+}
+
+.profile-name-block p {
+    font-size: 0.9rem;
+    opacity: 0.82;
+}
+
+/* Menú lateral (datos / progreso / pedidos) */
+
+.profile-admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.profile-tab-btn {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 191, 73, 0.65);
+    background: radial-gradient(circle at top, rgba(255, 191, 73, 0.28), rgba(15, 6, 3, 0.96));
+    color: #ffe6b0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 0 16px rgba(255, 145, 0, 0.5);
+    transition: all 0.18s ease-out;
+}
+
+.profile-tab-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 22px rgba(255, 191, 73, 0.9);
+}
+
+.profile-tab-btn.active {
+    background: linear-gradient(135deg, #ffb84d, #ff7e1d);
+    color: #140606;
+    box-shadow: 0 0 26px rgba(255, 159, 67, 1);
+}
+
+/* RIGHT: Datos */
+
+.profile-right {
+    flex: 1;
+    padding-top: 4px;
+}
+
+/* ============================
+   GRID de datos del perfil – versión elegante
+   ============================ */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 34px;
+}
+
+/* Tarjeta elegante */
+.profile-row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 22px 26px;
+    border-radius: 22px;
+
+    background: linear-gradient(135deg,
+            rgba(255, 180, 80, 0.08),
+            rgba(8, 3, 2, 0.78));
+
+    border: 1px solid rgba(255, 193, 120, 0.45);
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, 0.75),
+        inset 0 0 5px rgba(255, 180, 80, 0.12);
+
+    overflow: hidden;
+    transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        border-color 0.18s ease-out,
+        background 0.18s ease-out;
+}
+
+/* Glow suave interior */
+.profile-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 120% -20%, rgba(255, 210, 150, 0.32), transparent 60%);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Hover premium */
+.profile-row:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg,
+            rgba(255, 205, 130, 0.16),
+            rgba(15, 6, 3, 0.9));
+    border-color: rgba(255, 215, 160, 0.95);
+    box-shadow:
+        0 0 26px rgba(255, 195, 120, 0.5),
+        0 0 40px rgba(0, 0, 0, 0.95);
+}
+
+/* Label */
+.profile-row .label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #ffddaa;
+    opacity: 0.96;
+    font-weight: 600;
+    z-index: 1;
+}
+
+/* Valor */
+.profile-row .value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #fff7e6;
+    letter-spacing: 0.01em;
+    margin-top: 2px;
+    text-shadow: 0 0 6px rgba(255, 190, 110, 0.3);
+    z-index: 1;
+}
+
+/* Dirección ocupa todo el ancho */
+.profile-grid .profile-row:nth-child(7) {
+    grid-column: 1 / -1;
+}
+
+/* ======== BOTONES PERFIL (guardar / cerrar) ======== */
+
+.profile-right .btn-warning.btn-sm {
+    border-radius: 999px;
+    padding-inline: 1.8rem;
+    font-weight: 700;
+}
+
+.profile-right .btn-secondary.btn-sm {
+    border-radius: 999px;
+    padding-inline: 1.4rem;
+}
+
+.profile-right .btn-danger {
+    border-radius: 999px;
+    padding: 0.8rem 2.4rem;
+    font-weight: 700;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #ff4d4f, #d9363e);
+    border-color: #ff4d4f;
+    box-shadow: 0 0 22px rgba(255, 77, 79, 0.7);
+}
+
+/* ======== DEBUG (por si se usa de nuevo) ======== */
+
+.profile-debug {
+    margin-top: 28px;
+}
+
+.debug-toggle {
+    border-radius: 999px;
+    padding: 6px 16px;
+    border: 1px solid rgba(255, 180, 0, 0.4);
+    background: transparent;
+    color: #ffe6b0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.debug-toggle:hover {
+    background: rgba(255, 180, 0, 0.12);
+    box-shadow: 0 0 10px rgba(255, 180, 0, 0.5);
+    transform: translateY(-1px);
+}
+
+.debug-wrapper {
+    margin-top: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 180, 0, 0.35);
+}
+
+.debug-header {
+    padding: 8px 12px;
+    background: #4b2a10;
+    font-size: 0.85rem;
+}
+
+.debug-box {
+    padding: 12px 14px;
+    background: #1a070f;
+    font-size: 0.8rem;
+    max-height: 260px;
+    overflow: auto;
+}
+
+/* ======== RESPONSIVE ======== */
+
+@media (max-width: 768px) {
+    .profile-card {
+        flex-direction: column;
+        padding: 22px 16px;
+    }
+
+    .profile-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 196, 120, 0.35);
+        padding-right: 0;
+        padding-bottom: 18px;
+        min-width: 0;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .profile-grid .profile-row:nth-child(7) {
+        grid-column: auto;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ============================
+   MIS PEDIDOS – ESTILO KAMEHOUSE
+   ============================ */
+
+.profile-orders {
+    padding: 0.5rem 0.25rem 0.5rem;
+}
+
+.profile-section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ff8a2a;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.profile-order-card {
+    background: radial-gradient(circle at top, rgba(255, 159, 67, 0.25), rgba(9, 6, 3, 0.95));
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(255, 184, 77, 0.35);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-order-card .small-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.profile-order-card .big-value {
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-top: 0.25rem;
+}
+
+.orders-total-spent {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: #ffc857;
+    text-shadow: 0 0 18px rgba(255, 200, 87, 0.7);
+}
+
+/* Filtros */
+
+.orders-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+}
+
+.orders-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.orders-filter-btn {
+    border-radius: 999px;
+    padding: 0.45rem 1.4rem;
+    border: 2px solid rgba(255, 184, 77, 0.8);
+    background: transparent;
+    color: #ffc857;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.18s ease-out;
+    box-shadow: 0 0 0 rgba(255, 159, 67, 0);
+}
+
+.orders-filter-btn:hover {
+    background: radial-gradient(circle at top, rgba(255, 159, 67, 0.3), rgba(10, 7, 3, 0.95));
+    box-shadow: 0 0 8px rgba(255, 159, 67, 0.55);
+}
+
+.orders-filter-btn.active {
+    background: linear-gradient(135deg, #ffb84d, #ff7e1d);
+    color: #120606;
+    box-shadow: 0 0 18px rgba(255, 159, 67, 0.85);
+    border-color: #ffb84d;
+}
+
+/* Tabla de pedidos */
+
+.orders-table-wrapper {
+    margin-top: 0.75rem;
+    border-radius: 1.1rem;
+    overflow: hidden;
+    box-shadow: 0 0 32px rgba(0, 0, 0, 0.85);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: radial-gradient(circle at top, #21100a, #0b0504);
+    font-size: 0.95rem;
+}
+
+.orders-table thead {
+    background: linear-gradient(90deg, rgba(255, 153, 51, 0.2), rgba(255, 184, 77, 0.25));
+}
+
+.orders-table th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    color: #ffc857;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.orders-table td {
+    padding: 0.8rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.orders-table tr:nth-child(even) td {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.orders-table tr:nth-child(odd) td {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.orders-table tr:hover td {
+    background: radial-gradient(circle at top, rgba(255, 159, 67, 0.18), rgba(0, 0, 0, 0.9));
+}
+
+/* columnas */
+
+.orders-cell-id {
+    font-weight: 700;
+    color: #ffd27f;
+}
+
+.orders-cell-total {
+    font-weight: 700;
+}
+
+.orders-cell-date {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Pills de estado */
+
+.status-pill {
+    display: inline-block;
+    padding: 0.15rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+
+.status-pill--sent {
+    background: rgba(82, 196, 26, 0.14);
+    border-color: rgba(82, 196, 26, 0.8);
+    color: #52c41a;
+}
+
+.status-pill--pending {
+    background: rgba(255, 200, 87, 0.12);
+    border-color: rgba(255, 200, 87, 0.8);
+    color: #ffdd73;
+}
+
+.status-pill--cancelled {
+    background: rgba(255, 77, 79, 0.12);
+    border-color: rgba(255, 77, 79, 0.9);
+    color: #ff4d4f;
+}
